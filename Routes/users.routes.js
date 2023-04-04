@@ -67,6 +67,21 @@ userRoute.post("/login", async (req, res) => {
   }
 });
 
+userRoute.get("/getProfile",async(req,res)=>{
+    const {email}=req.query
+    try{
+      if(email){
+        const data=await RegisterModel.find({email})
+        res.status(201).json({data:data});
+      }else{
+        res.status(401).json({msg:"please Login"});
+      }
+    }catch(err){
+      console.log("err", err);
+      res.status(401).json({msg:err});
+    }
+})
+
 module.exports = {
   userRoute,
 };

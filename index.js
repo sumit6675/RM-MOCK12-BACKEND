@@ -4,6 +4,7 @@ const app=express()
 const {connection}=require("./config/database")
 const cors=require("cors")
 const { userRoute } = require("./Routes/users.routes")
+const { calculateRoute } = require("./Routes/calculate.routes")
 
 
 app.use(
@@ -15,6 +16,7 @@ app.use(
 app.use(express.json())
 
 app.use("/users",userRoute)
+app.use("/calculate",calculateRoute)
 
 app.get("/",(req,res)=>{
     res.send("Welcome to mock 12")
