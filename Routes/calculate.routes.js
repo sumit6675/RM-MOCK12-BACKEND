@@ -23,8 +23,8 @@ calculateRoute.post("/postData",async(req,res)=>{
     }
 })
 
-calculateRoute.get("/getProfile",async(req,res)=>{
-   const {email}=req.body
+calculateRoute.get("/getData",async(req,res)=>{
+   const {email}=req.query
     try{
         if(email){
             const data=await CalculateModel.find({email})
